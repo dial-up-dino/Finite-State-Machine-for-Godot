@@ -37,7 +37,7 @@ func setup(opts: Dictionary[String, Variant]) -> void:
         lcd = opts.lcd
 
 
-func on_turn_on_animation_complete() -> void:
+func on_animation_complete() -> void:
     pass
 
 
@@ -52,7 +52,7 @@ func on_turned_off() -> void:
 class_name TurningOnLCDState
 extends LCDState
 
-@export var idle_state: LCDState
+var idle_state: LCDState
 
 func setup(opts: Dictionary[String, Variant]) -> void:
     super(opts)
@@ -66,7 +66,7 @@ func enter() -> void:
     lcd.play_turn_on_animation()
 
 
-func on_turn_on_animation_complete() -> void:
+func on_animation_complete() -> void:
     super()
     transition(idle_state)
 ```
@@ -100,6 +100,6 @@ func _ready() -> void:
    that `update` and `fixed_update` calls are handled by `StateMachine`.
 
 ```gdscript
-func on_turn_on_animation_complete() -> void:
-   state_machine.current_state.on_turn_on_animation_complete()
+func on_animation_complete() -> void:
+   state_machine.current_state.on_animation_complete()
 ```
